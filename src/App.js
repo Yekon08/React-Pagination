@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
 import Posts from './components/Posts';
-import Pagination from './components/Pagination';
+import PaginationPosts from './components/PaginationPosts';
+import Box from '@material-ui/core/Box';
 
 const App = () => {
 
@@ -33,12 +34,20 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Posts</h1>
-        <Posts posts={currentPosts} loading={loading} />
-        <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
+        <Box style={styles.container} boxShadow={2} p={4}>
+          <h1>Posts</h1>
+          <Posts posts={currentPosts} loading={loading} />
+        </Box>
+          <PaginationPosts postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
       </header>
     </div>
   );
+}
+
+const styles = {
+  container: {
+    borderRadius: '5px',
+  }
 }
 
 export default App;
