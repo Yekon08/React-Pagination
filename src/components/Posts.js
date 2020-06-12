@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,6 +22,9 @@ const Posts = (props) => {
 
     return (
         <div className={classes.root}>
+            <Typography variant="h5">
+                Posts Titles
+            </Typography>
             <List>
                 {props.posts.map(post => (
                     <ListItem component="a" href="#" button key={post.id}>

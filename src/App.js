@@ -4,13 +4,15 @@ import axios from 'axios'
 import Posts from './components/Posts';
 import PaginationPosts from './components/PaginationPosts';
 import Box from '@material-ui/core/Box';
+import AddPosts from './components/AppNav';
+import AddPost from './components/AddPost';
 
 const App = () => {
 
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(10)
+  const [postsPerPage] = useState(10)
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -34,20 +36,15 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Box style={styles.container} boxShadow={2} p={4}>
-          <h1>Posts</h1>
+        <AddPosts />
+        <Box boxShadow={1} p={4} mt='100px' borderRadius='4px'>
           <Posts posts={currentPosts} loading={loading} />
         </Box>
           <PaginationPosts postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} />
+          <AddPost />
       </header>
     </div>
   );
-}
-
-const styles = {
-  container: {
-    borderRadius: '5px',
-  }
 }
 
 export default App;
